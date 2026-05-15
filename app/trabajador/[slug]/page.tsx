@@ -59,7 +59,7 @@ function ReviewsSection({ workerId, reviews }: { workerId: string; reviews: Revi
       <h2 className="text-xl font-semibold">
         Reseñas{reviews.length > 0 ? ` (${reviews.length})` : ''}
       </h2>
-      <ReviewForm workerId={workerId} onReviewAdded={() => {}} />
+      <ReviewForm workerId={workerId} />
       <ReviewList reviews={reviews} />
     </div>
   )

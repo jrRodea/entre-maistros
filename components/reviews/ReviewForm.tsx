@@ -2,21 +2,23 @@
 
 import { useState } from "react"
 import { useUser } from "@clerk/nextjs"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Textarea } from "@/components/ui/textarea"
 import StarRating from "@/components/reviews/StarRating"
 
 interface ReviewFormProps {
   workerId: string
-  onReviewAdded: () => void
 }
 
-export default function ReviewForm({ workerId, onReviewAdded }: ReviewFormProps) {
+export default function ReviewForm({ workerId }: ReviewFormProps) {
   const { user } = useUser()
+  const router = useRouter()
   const [rating, setRating] = useState(0)
   const [comment, setComment] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
+  const [success, setSuccess] = useState(false)
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault()
@@ -34,7 +36,8 @@ export default function ReviewForm({ workerId, onReviewAdded }: ReviewFormProps)
       if (!res.ok) throw new Error(data.error ?? 'Error al guardar')
       setRating(0)
       setComment('')
-      onReviewAdded()
+      setSuccess(true)
+      router.refresh()
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Error inesperado')
     } finally {
@@ -47,6 +50,14 @@ export default function ReviewForm({ workerId, onReviewAdded }: ReviewFormProps)
       <p className="text-sm text-gray-500 bg-gray-50 rounded-lg p-3">
         <a href="/sign-in" className="text-amber-700 font-medium hover:underline">Inicia sesión</a> para dejar tu reseña.
       </p>
+    )
+  }
+
+  if (success) {
+    return (
+      <div className="bg-green-50 border border-green-200 text-green-800 rounded-lg p-4 text-sm">
+        ¡Gracias por tu reseña! Ya está publicada.
+      </div>
     )
   }
 
