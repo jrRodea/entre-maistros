@@ -72,7 +72,7 @@ export default async function HomePage() {
       <section className="py-12 px-4 bg-brand-crema">
         <div className="max-w-6xl mx-auto">
           <div className="flex items-center justify-between mb-6">
-            <h2 className="font-display font-bold text-brand-verde text-2xl">Maestros destacados</h2>
+            <h2 className="font-display font-bold text-brand-verde text-2xl">Maistros destacados</h2>
             <Link href="/buscar" className="font-sans text-brand-naranja text-sm font-semibold hover:underline">
               Ver todos →
             </Link>
@@ -86,18 +86,18 @@ export default async function HomePage() {
             </div>
           ) : (
             <div className="text-center py-12 bg-white rounded-2xl border border-brand-crema-300">
-              <p className="font-sans text-brand-verde-600">Aún no hay maestros registrados.</p>
+              <p className="font-sans text-brand-verde-600">Aún no hay maistros registrados.</p>
               <p className="mt-1 text-sm font-sans text-brand-crema-300">¡Sé el primero en crear tu perfil!</p>
             </div>
           )}
         </div>
       </section>
 
-      {/* CTA maestros */}
+      {/* CTA maistros */}
       <section className="py-16 px-4 bg-brand-verde">
         <div className="max-w-2xl mx-auto text-center">
           <h2 className="font-display font-bold text-white text-3xl md:text-4xl mb-4">
-            ¿Eres maestro?
+            ¿Eres maistro?
           </h2>
           <p className="font-sans text-brand-nopal text-lg mb-8">
             Crea tu perfil gratis, muestra tu trabajo y consigue más clientes en Tepeji del Río.

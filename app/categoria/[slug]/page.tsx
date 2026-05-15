@@ -57,7 +57,7 @@ export default async function CategoriaPage({ params }: PageProps) {
         {workers.length > 0 ? (
           <div>
             <p className="text-sm font-sans text-brand-verde-600 mb-4">
-              {workers.length} {workers.length === 1 ? 'maestro disponible' : 'maestros disponibles'}
+              {workers.length} {workers.length === 1 ? 'maistro disponible' : 'maistros disponibles'}
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {workers.map(worker => (

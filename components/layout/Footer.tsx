@@ -22,7 +22,7 @@ export default function Footer() {
             Buscar
           </Link>
           <Link href="/perfil/crear" className="font-sans text-brand-nopal hover:text-brand-amarillo transition-colors">
-            Soy maestro
+            Soy maistro
           </Link>
         </div>
       </div>

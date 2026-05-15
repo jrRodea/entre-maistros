@@ -24,7 +24,7 @@ export default async function CrearPerfilPage() {
 
       <main className="flex-1 max-w-2xl mx-auto w-full px-4 py-8">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">Crea tu perfil de maestro</h1>
+          <h1 className="text-3xl font-bold text-gray-900">Crea tu perfil de maistro</h1>
           <p className="text-gray-600 mt-2">
             Tu perfil será público para que los vecinos de Tepeji te puedan encontrar y contactar.
           </p>

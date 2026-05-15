@@ -33,7 +33,7 @@ export default function Header() {
           {isSignedIn ? (
             <>
               {isWorker && workerSlug ? (
-                /* Maestro: acceso rápido a su perfil público + editar */
+                /* Maistro: acceso rápido a su perfil público + editar */
                 <div className="flex items-center gap-1.5">
                   <Link href={`/trabajador/${workerSlug}`}>
                     <Button
@@ -57,14 +57,14 @@ export default function Header() {
                   </Link>
                 </div>
               ) : (
-                /* Usuario normal: invitación a registrarse como maestro */
+                /* Usuario normal: invitación a registrarse como maistro */
                 <Link href="/perfil/crear">
                   <Button
                     size="sm"
                     className="h-10 bg-brand-naranja hover:bg-orange-600 text-white font-sans font-semibold rounded-xl gap-1.5"
                   >
                     <Hammer className="h-4 w-4" />
-                    <span className="hidden sm:inline">Ser maestro</span>
+                    <span className="hidden sm:inline">Ser maistro</span>
                   </Button>
                 </Link>
               )}
@@ -87,7 +87,7 @@ export default function Header() {
                   className="h-10 bg-brand-naranja hover:bg-orange-600 text-white font-sans font-semibold rounded-xl gap-1.5 px-4"
                 >
                   <Hammer className="h-4 w-4 sm:hidden" />
-                  <span className="hidden sm:inline">Soy maestro</span>
+                  <span className="hidden sm:inline">Soy maistro</span>
                   <span className="sm:hidden">Únete</span>
                 </Button>
               </Link>

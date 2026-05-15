@@ -18,7 +18,7 @@ export default function NotFound() {
         <div className="flex gap-3">
           <Link href="/buscar">
             <Button className="bg-brand-naranja hover:bg-orange-600 text-white font-sans font-semibold rounded-xl">
-              Buscar maestros
+              Buscar maistros
             </Button>
           </Link>
           <Link href="/">

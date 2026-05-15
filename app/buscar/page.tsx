@@ -36,7 +36,7 @@ async function WorkerResults({ q, categoria }: { q: string; categoria: string })
   if (!workers.length) {
     return (
       <div className="text-center py-16 bg-white rounded-2xl border border-brand-crema-300">
-        <p className="font-sans text-brand-verde text-lg font-medium">No encontramos maestros para tu búsqueda.</p>
+        <p className="font-sans text-brand-verde text-lg font-medium">No encontramos maistros para tu búsqueda.</p>
         <p className="mt-2 text-sm font-sans text-brand-verde-600">Intenta con otros términos o categorías.</p>
       </div>
     )
@@ -82,7 +82,7 @@ export default async function BuscarPage({ searchParams }: PageProps) {
 
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
         <h1 className="font-display font-bold text-brand-verde text-2xl mb-6">
-          {q ? `Resultados para "${q}"` : 'Buscar maestros'}
+          {q ? `Resultados para "${q}"` : 'Buscar maistros'}
         </h1>
 
         <div className="space-y-6">
