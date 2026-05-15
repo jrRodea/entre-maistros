@@ -21,13 +21,15 @@ export default function StarRating({ rating, max = 5, interactive, onChange, siz
           key={i}
           type={interactive ? 'button' : undefined}
           onClick={interactive ? () => onChange?.(i + 1) : undefined}
-          className={cn('transition-colors', interactive && 'cursor-pointer hover:scale-110')}
+          className={cn('transition-transform', interactive && 'cursor-pointer hover:scale-110')}
           disabled={!interactive}
         >
           <Star
             className={cn(
               sizeClass,
-              i < rating ? 'fill-amber-400 text-amber-400' : 'fill-gray-200 text-gray-200'
+              i < rating
+                ? 'fill-brand-amarillo text-brand-amarillo'
+                : 'fill-brand-crema-300 text-brand-crema-300'
             )}
           />
         </button>

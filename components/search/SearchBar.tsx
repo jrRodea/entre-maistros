@@ -27,15 +27,18 @@ export default function SearchBar({ defaultValue = '', defaultCategory = '', lar
   return (
     <form onSubmit={handleSubmit} className="flex gap-2 w-full">
       <div className="relative flex-1">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 h-4 w-4" />
+        <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-crema-300 h-4 w-4" />
         <Input
           value={query}
           onChange={e => setQuery(e.target.value)}
           placeholder="Plomero, electricista, pintor..."
-          className={`pl-10 ${large ? 'h-12 text-base' : ''} bg-white`}
+          className={`pl-10 rounded-xl border-brand-crema-300 bg-white focus:border-brand-verde focus:ring-brand-verde font-sans ${large ? 'h-12 text-base' : ''}`}
         />
       </div>
-      <Button type="submit" className={`bg-amber-600 hover:bg-amber-700 text-white ${large ? 'h-12 px-6' : ''}`}>
+      <Button
+        type="submit"
+        className={`bg-brand-naranja hover:bg-orange-600 text-white font-sans font-semibold rounded-xl ${large ? 'h-12 px-6' : ''}`}
+      >
         Buscar
       </Button>
     </form>

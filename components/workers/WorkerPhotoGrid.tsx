@@ -10,10 +10,10 @@ export default function WorkerPhotoGrid({ photos }: WorkerPhotoGridProps) {
 
   return (
     <div>
-      <h2 className="text-xl font-semibold mb-4">Trabajos realizados</h2>
+      <h2 className="font-display font-semibold text-brand-verde text-xl mb-4">Trabajos realizados</h2>
       <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
         {photos.map(photo => (
-          <div key={photo.id} className="relative aspect-square rounded-lg overflow-hidden bg-gray-100 group">
+          <div key={photo.id} className="relative aspect-square rounded-2xl overflow-hidden bg-brand-crema-200 group">
             <Image
               src={photo.photo_url}
               alt={photo.caption || 'Trabajo realizado'}
@@ -21,7 +21,7 @@ export default function WorkerPhotoGrid({ photos }: WorkerPhotoGridProps) {
               className="object-cover transition-transform group-hover:scale-105"
             />
             {photo.caption && (
-              <div className="absolute inset-x-0 bottom-0 bg-black/50 text-white text-xs p-2 opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute inset-x-0 bottom-0 bg-brand-verde/80 text-white text-xs font-sans p-2 opacity-0 group-hover:opacity-100 transition-opacity">
                 {photo.caption}
               </div>
             )}

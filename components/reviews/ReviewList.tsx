@@ -10,7 +10,7 @@ interface ReviewListProps {
 export default function ReviewList({ reviews }: ReviewListProps) {
   if (!reviews.length) {
     return (
-      <p className="text-gray-500 text-sm py-4">
+      <p className="font-sans text-brand-verde-600 text-sm py-4">
         Aún no hay reseñas. ¡Sé el primero en dejar una!
       </p>
     )
@@ -19,18 +19,18 @@ export default function ReviewList({ reviews }: ReviewListProps) {
   return (
     <div className="space-y-4">
       {reviews.map(review => (
-        <div key={review.id} className="border border-gray-100 rounded-lg p-4 bg-white">
+        <div key={review.id} className="bg-white border border-brand-crema-300 rounded-2xl p-4">
           <div className="flex items-start justify-between gap-2">
             <div>
-              <p className="font-medium text-sm">{review.reviewer_name}</p>
+              <p className="font-sans font-semibold text-sm text-brand-verde">{review.reviewer_name}</p>
               <StarRating rating={review.rating} size="sm" />
             </div>
-            <time className="text-xs text-gray-400 flex-shrink-0">
+            <time className="text-xs font-sans text-brand-crema-300 flex-shrink-0">
               {formatDistanceToNow(new Date(review.created_at), { locale: es, addSuffix: true })}
             </time>
           </div>
           {review.comment && (
-            <p className="mt-2 text-sm text-gray-700">{review.comment}</p>
+            <p className="mt-2 text-sm font-sans text-brand-verde-600">{review.comment}</p>
           )}
         </div>
       ))}

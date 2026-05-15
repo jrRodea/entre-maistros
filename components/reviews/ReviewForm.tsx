@@ -47,23 +47,23 @@ export default function ReviewForm({ workerId }: ReviewFormProps) {
 
   if (!user) {
     return (
-      <p className="text-sm text-gray-500 bg-gray-50 rounded-lg p-3">
-        <a href="/sign-in" className="text-amber-700 font-medium hover:underline">Inicia sesión</a> para dejar tu reseña.
+      <p className="text-sm font-sans text-brand-verde-600 bg-brand-verde-100 rounded-xl p-3">
+        <a href="/sign-in" className="text-brand-naranja font-semibold hover:underline">Inicia sesión</a> para dejar tu reseña.
       </p>
     )
   }
 
   if (success) {
     return (
-      <div className="bg-green-50 border border-green-200 text-green-800 rounded-lg p-4 text-sm">
+      <div className="bg-brand-verde-100 border border-brand-verde-200 text-brand-verde font-sans rounded-xl p-4 text-sm font-medium">
         ¡Gracias por tu reseña! Ya está publicada.
       </div>
     )
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-3 bg-amber-50 rounded-lg p-4">
-      <p className="text-sm font-medium text-gray-700">Tu calificación</p>
+    <form onSubmit={handleSubmit} className="space-y-3 bg-brand-verde-100 rounded-2xl p-4">
+      <p className="text-sm font-sans font-medium text-brand-verde">Tu calificación</p>
       <StarRating rating={rating} interactive onChange={setRating} size="lg" />
 
       <Textarea
@@ -71,12 +71,16 @@ export default function ReviewForm({ workerId }: ReviewFormProps) {
         onChange={e => setComment(e.target.value)}
         placeholder="Cuéntanos cómo fue tu experiencia (opcional)"
         rows={3}
-        className="bg-white resize-none"
+        className="bg-white border-brand-crema-300 focus:border-brand-verde focus:ring-brand-verde rounded-xl resize-none font-sans"
       />
 
-      {error && <p className="text-sm text-red-600">{error}</p>}
+      {error && <p className="text-sm font-sans text-red-600">{error}</p>}
 
-      <Button type="submit" disabled={loading} className="bg-amber-600 hover:bg-amber-700 text-white w-full">
+      <Button
+        type="submit"
+        disabled={loading}
+        className="bg-brand-naranja hover:bg-orange-600 text-white font-sans font-semibold rounded-xl w-full"
+      >
         {loading ? 'Guardando...' : 'Publicar reseña'}
       </Button>
     </form>

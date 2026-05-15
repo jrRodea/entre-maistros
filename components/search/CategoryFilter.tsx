@@ -29,10 +29,10 @@ export default function CategoryFilter({ selected }: CategoryFilterProps) {
           key={cat.slug}
           onClick={() => handleSelect(cat.slug)}
           className={cn(
-            'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-medium border transition-colors',
+            'flex items-center gap-1.5 px-3 py-1.5 rounded-full text-sm font-sans font-medium border-0 transition-colors',
             selected === cat.slug
-              ? 'bg-amber-600 text-white border-amber-600'
-              : 'bg-white text-gray-700 border-gray-200 hover:border-amber-400 hover:text-amber-700'
+              ? 'bg-brand-verde text-brand-amarillo'
+              : 'bg-brand-crema-200 text-brand-verde-700 hover:bg-brand-verde-100'
           )}
         >
           <span>{cat.icon}</span>

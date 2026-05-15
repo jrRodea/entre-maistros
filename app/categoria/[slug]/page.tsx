@@ -43,10 +43,11 @@ export default async function CategoriaPage({ params }: PageProps) {
       <Header />
 
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
-        <div className="mb-8">
+        {/* Category header */}
+        <div className="bg-brand-verde rounded-2xl p-8 mb-8">
           <div className="text-5xl mb-3">{cat.icon}</div>
-          <h1 className="text-3xl font-bold text-gray-900">{cat.name}</h1>
-          <p className="text-gray-600 mt-2">{cat.description}</p>
+          <h1 className="font-display font-bold text-white text-3xl">{cat.name}</h1>
+          <p className="font-sans text-brand-nopal mt-2">{cat.description}</p>
         </div>
 
         <div className="mb-6">
@@ -55,7 +56,9 @@ export default async function CategoriaPage({ params }: PageProps) {
 
         {workers.length > 0 ? (
           <div>
-            <p className="text-sm text-gray-500 mb-4">{workers.length} {workers.length === 1 ? 'maestro disponible' : 'maestros disponibles'}</p>
+            <p className="text-sm font-sans text-brand-verde-600 mb-4">
+              {workers.length} {workers.length === 1 ? 'maestro disponible' : 'maestros disponibles'}
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {workers.map(worker => (
                 <WorkerCard key={worker.id} worker={worker} />
@@ -63,9 +66,9 @@ export default async function CategoriaPage({ params }: PageProps) {
             </div>
           </div>
         ) : (
-          <div className="text-center py-16 text-gray-500">
-            <p className="text-lg">Aún no hay {cat.name.toLowerCase()}s registrados.</p>
-            <p className="mt-2 text-sm">¿Eres {cat.name.toLowerCase()}? ¡Crea tu perfil!</p>
+          <div className="text-center py-16 bg-white rounded-2xl border border-brand-crema-300">
+            <p className="font-sans text-brand-verde text-lg">Aún no hay {cat.name.toLowerCase()}s registrados.</p>
+            <p className="mt-2 text-sm font-sans text-brand-verde-600">¿Eres {cat.name.toLowerCase()}? ¡Crea tu perfil!</p>
           </div>
         )}
       </main>

@@ -35,16 +35,18 @@ async function WorkerResults({ q, categoria }: { q: string; categoria: string })
 
   if (!workers.length) {
     return (
-      <div className="text-center py-16 text-gray-500">
-        <p className="text-lg font-medium">No encontramos maestros para tu búsqueda.</p>
-        <p className="mt-2 text-sm">Intenta con otros términos o categorías.</p>
+      <div className="text-center py-16 bg-white rounded-2xl border border-brand-crema-300">
+        <p className="font-sans text-brand-verde text-lg font-medium">No encontramos maestros para tu búsqueda.</p>
+        <p className="mt-2 text-sm font-sans text-brand-verde-600">Intenta con otros términos o categorías.</p>
       </div>
     )
   }
 
   return (
     <div>
-      <p className="text-sm text-gray-500 mb-4">{workers.length} {workers.length === 1 ? 'resultado' : 'resultados'}</p>
+      <p className="text-sm font-sans text-brand-verde-600 mb-4">
+        {workers.length} {workers.length === 1 ? 'resultado' : 'resultados'}
+      </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {workers.map(worker => (
           <WorkerCard key={worker.id} worker={worker} />
@@ -58,7 +60,7 @@ function WorkerSkeleton() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {Array.from({ length: 6 }).map((_, i) => (
-        <div key={i} className="border rounded-lg p-4 flex gap-4">
+        <div key={i} className="bg-white border border-brand-crema-300 rounded-2xl p-4 flex gap-4">
           <Skeleton className="w-[72px] h-[72px] rounded-full flex-shrink-0" />
           <div className="flex-1 space-y-2">
             <Skeleton className="h-4 w-3/4" />
@@ -79,7 +81,7 @@ export default async function BuscarPage({ searchParams }: PageProps) {
       <Header />
 
       <main className="flex-1 max-w-6xl mx-auto w-full px-4 py-8">
-        <h1 className="text-2xl font-bold text-gray-900 mb-6">
+        <h1 className="font-display font-bold text-brand-verde text-2xl mb-6">
           {q ? `Resultados para "${q}"` : 'Buscar maestros'}
         </h1>
 
@@ -87,7 +89,7 @@ export default async function BuscarPage({ searchParams }: PageProps) {
           <SearchBar defaultValue={q} defaultCategory={categoria} />
 
           <div>
-            <p className="text-sm font-medium text-gray-700 mb-2">Filtrar por categoría:</p>
+            <p className="text-sm font-sans font-medium text-brand-verde mb-2">Filtrar por categoría:</p>
             <Suspense>
               <CategoryFilter selected={categoria} />
             </Suspense>
