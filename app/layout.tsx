@@ -30,7 +30,17 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider localization={esMX}>
+    <ClerkProvider
+      localization={esMX}
+      appearance={{
+        variables: {
+          colorPrimary: '#F07A30',
+          colorBackground: '#F5F0E8',
+          colorText: '#1A2E14',
+          fontFamily: '"Plus Jakarta Sans", sans-serif',
+        },
+      }}
+    >
       <html
         lang="es"
         className={`${fraunces.variable} ${plusJakartaSans.variable} h-full antialiased`}
