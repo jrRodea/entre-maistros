@@ -24,6 +24,9 @@ export default function Footer() {
           <Link href="/perfil/crear" className="font-sans text-brand-nopal hover:text-brand-amarillo transition-colors">
             Soy maistro
           </Link>
+          <Link href="/privacidad" className="font-sans text-brand-nopal hover:text-brand-amarillo transition-colors">
+            Privacidad
+          </Link>
         </div>
       </div>
     </footer>
