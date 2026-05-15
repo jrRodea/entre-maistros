@@ -2,7 +2,7 @@ import type { MetadataRoute } from 'next'
 import { CATEGORIES } from '@/lib/categories'
 import { createServerSupabase } from '@/lib/supabase'
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://entre-maistros.vercel.app'
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.entre-maistros.com'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const supabase = createServerSupabase()
