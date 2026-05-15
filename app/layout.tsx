@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     description: 'Encuentra gente que sí sabe hacer el jale en Tepeji del Río',
     url: 'https://www.entre-maistros.com',
     siteName: 'Entre Maistros',
-    images: [{ url: '/logo-horizontal.png', width: 1200, height: 630 }],
+    images: [{ url: '/og-image.png', width: 512, height: 512 }],
     locale: 'es_MX',
     type: 'website',
   },
