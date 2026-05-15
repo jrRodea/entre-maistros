@@ -14,26 +14,30 @@ interface PageProps {
 }
 
 async function getWorker(slug: string) {
-  const supabase = createServerSupabase()
+  try {
+    const supabase = createServerSupabase()
 
-  const { data: worker } = await supabase
-    .from('workers_with_stats')
-    .select('*')
-    .eq('slug', slug)
-    .eq('is_published', true)
-    .single()
+    const { data: worker, error: workerError } = await supabase
+      .from('workers_with_stats')
+      .select('*')
+      .eq('slug', slug)
+      .eq('is_published', true)
+      .single()
 
-  if (!worker) return null
+    if (workerError || !worker) return null
 
-  const [{ data: skills }, { data: photos }, { data: reviews }] = await Promise.all([
-    supabase.from('worker_skills').select('*').eq('worker_id', worker.id),
-    supabase.from('work_photos').select('*').eq('worker_id', worker.id).order('created_at', { ascending: false }),
-    supabase.from('reviews').select('*').eq('worker_id', worker.id).order('created_at', { ascending: false }),
-  ])
+    const [{ data: skills }, { data: photos }, { data: reviews }] = await Promise.all([
+      supabase.from('worker_skills').select('*').eq('worker_id', worker.id),
+      supabase.from('work_photos').select('*').eq('worker_id', worker.id).order('created_at', { ascending: false }),
+      supabase.from('reviews').select('*').eq('worker_id', worker.id).order('created_at', { ascending: false }),
+    ])
 
-  return {
-    worker: { ...worker, skills: skills ?? [], photos: photos ?? [] } as WorkerProfileType,
-    reviews: (reviews ?? []) as Review[],
+    return {
+      worker: { ...worker, skills: skills ?? [], photos: photos ?? [] } as WorkerProfileType,
+      reviews: (reviews ?? []) as Review[],
+    }
+  } catch {
+    return null
   }
 }
 
