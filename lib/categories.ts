@@ -9,4 +9,8 @@ export const CATEGORIES = [
   { name: 'Cerrajero', slug: 'cerrajero', icon: '🔑', description: 'Apertura, cambio y reparación de cerraduras' },
   { name: 'Técnico en electrodomésticos', slug: 'tecnico-electrodomesticos', icon: '🔌', description: 'Reparación de lavadoras, refrigeradores y más' },
   { name: 'Limpieza del hogar', slug: 'limpieza-hogar', icon: '🧹', description: 'Limpieza general, profunda y mantenimiento del hogar' },
+  { name: 'Veterinario', slug: 'veterinario', icon: '🐾', description: 'Atención médica y cuidado de mascotas' },
+  { name: 'Músico', slug: 'musico', icon: '🎵', description: 'Clases de música, bandas y eventos' },
+  { name: 'Médico', slug: 'medico', icon: '🩺', description: 'Consultas médicas generales a domicilio' },
+  { name: 'Asesor Académico', slug: 'asesor-academico', icon: '📚', description: 'Tutorías, clases particulares y apoyo escolar' },
 ]
