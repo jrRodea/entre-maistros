@@ -1,6 +1,7 @@
 import type { Metadata } from "next"
 import { Fraunces, Plus_Jakarta_Sans } from "next/font/google"
 import { ClerkProvider } from "@clerk/nextjs"
+import { esMX } from "@clerk/localizations"
 import "./globals.css"
 
 const fraunces = Fraunces({
@@ -29,7 +30,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <ClerkProvider>
+    <ClerkProvider localization={esMX}>
       <html
         lang="es"
         className={`${fraunces.variable} ${plusJakartaSans.variable} h-full antialiased`}
