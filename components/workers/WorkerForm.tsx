@@ -8,8 +8,8 @@ import { Textarea } from "@/components/ui/textarea"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Checkbox } from "@/components/ui/checkbox"
-import { Badge } from "@/components/ui/badge"
 import { X, Upload } from "lucide-react"
+
 import type { WorkerProfile } from "@/types"
 
 interface WorkerFormProps {
@@ -37,21 +37,12 @@ export default function WorkerForm({ mode, initialData, variant = 'default' }: W
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
     initialData?.categories?.map(c => c.id) ?? []
   )
-  const [skills, setSkills] = useState<string[]>(
-    initialData?.skills?.map(s => s.skill) ?? []
+  const [skillsText, setSkillsText] = useState(
+    initialData?.skills?.map(s => s.skill).join(', ') ?? ''
   )
-  const [skillInput, setSkillInput] = useState('')
   const [avatarFile, setAvatarFile] = useState<File | null>(null)
   const [photoFiles, setPhotoFiles] = useState<File[]>([])
   const [avatarPreview, setAvatarPreview] = useState(initialData?.avatar_url ?? '')
-
-  function addSkill() {
-    const trimmed = skillInput.trim()
-    if (trimmed && !skills.includes(trimmed)) {
-      setSkills(prev => [...prev, trimmed])
-    }
-    setSkillInput('')
-  }
 
   function handleAvatarChange(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0]
@@ -99,7 +90,7 @@ export default function WorkerForm({ mode, initialData, variant = 'default' }: W
         whatsapp_number: whatsapp.replace(/\D/g, ''),
         avatar_url: avatarUrl,
         category_ids: selectedCategories,
-        skills,
+        skills: skillsText.split(',').map(s => s.trim()).filter(Boolean),
         photo_urls: photoUrls,
       }
 
@@ -226,32 +217,16 @@ export default function WorkerForm({ mode, initialData, variant = 'default' }: W
       </div>
 
       {/* Habilidades */}
-      <div className="space-y-2">
+      <div className="space-y-1.5">
         <Label className={labelClass}>Habilidades específicas</Label>
-        <div className="flex gap-2">
-          <Input
-            value={skillInput}
-            onChange={e => setSkillInput(e.target.value)}
-            onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); addSkill() } }}
-            placeholder="Ej. Soldadura, mosaico, pintura texturizada..."
-            className={inputClass}
-          />
-          <Button type="button" variant="outline" onClick={addSkill} className="border-brand-verde text-brand-verde hover:bg-brand-verde-100 font-sans rounded-xl">
-            Agregar
-          </Button>
-        </div>
-        {skills.length > 0 && (
-          <div className="flex flex-wrap gap-2 mt-2">
-            {skills.map(skill => (
-              <Badge key={skill} className="bg-brand-verde-100 text-brand-verde-700 border-0 rounded-full font-sans gap-1 px-3 max-w-full">
-                <span className="break-all">{skill}</span>
-                <button type="button" onClick={() => setSkills(prev => prev.filter(s => s !== skill))}>
-                  <X className="h-3 w-3 flex-shrink-0" />
-                </button>
-              </Badge>
-            ))}
-          </div>
-        )}
+        <Textarea
+          value={skillsText}
+          onChange={e => setSkillsText(e.target.value)}
+          placeholder="Ej. Soldadura, mosaico, pintura texturizada, acabados finos..."
+          rows={3}
+          className={`${inputClass} resize-none`}
+        />
+        <p className="text-xs font-sans text-brand-verde-600">Separa cada habilidad con una coma</p>
       </div>
 
       {/* Fotos de trabajo */}
