@@ -13,4 +13,8 @@ export const CATEGORIES = [
   { name: 'Músico', slug: 'musico', icon: '🎵', description: 'Clases de música, bandas y eventos' },
   { name: 'Médico', slug: 'medico', icon: '🩺', description: 'Consultas médicas generales a domicilio' },
   { name: 'Asesor Académico', slug: 'asesor-academico', icon: '📚', description: 'Tutorías, clases particulares y apoyo escolar' },
+  { name: 'Fotógrafo', slug: 'fotografo', icon: '📸', description: 'Fotografía de eventos, retratos y comercial' },
+  { name: 'Manualidades', slug: 'manualidades', icon: '🎨', description: 'Artesanías, decoración y trabajos a mano' },
+  { name: 'Repartidor', slug: 'repartidor', icon: '🛵', description: 'Entregas y mensajería local en Tepeji del Río' },
+  { name: 'Mesero', slug: 'mesero', icon: '🍽️', description: 'Servicio de meseros para eventos y celebraciones' },
 ]
