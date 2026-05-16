@@ -104,9 +104,16 @@ export default function WorkerProfile({ worker }: WorkerProfileProps) {
       {worker.skills && worker.skills.length > 0 && (
         <div className="bg-white rounded-2xl p-6">
           <h2 className="font-display font-semibold text-brand-verde text-xl mb-3">Habilidades</h2>
-          <p className="font-sans text-brand-verde-700 leading-relaxed">
-            {worker.skills.map(s => s.skill).join(' · ')}
-          </p>
+          <div className="flex flex-wrap gap-2">
+            {worker.skills.map(s => (
+              <span
+                key={s.id}
+                className="font-sans text-sm text-brand-verde-700 bg-brand-verde-100 px-3 py-1 rounded-full break-words min-w-0"
+              >
+                {s.skill}
+              </span>
+            ))}
+          </div>
         </div>
       )}
 
