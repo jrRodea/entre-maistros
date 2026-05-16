@@ -243,10 +243,10 @@ export default function WorkerForm({ mode, initialData, variant = 'default' }: W
         {skills.length > 0 && (
           <div className="flex flex-wrap gap-2 mt-2">
             {skills.map(skill => (
-              <Badge key={skill} className="bg-brand-verde-100 text-brand-verde-700 border-0 rounded-full font-sans gap-1 px-3">
-                {skill}
+              <Badge key={skill} className="bg-brand-verde-100 text-brand-verde-700 border-0 rounded-full font-sans gap-1 px-3 max-w-full">
+                <span className="break-all">{skill}</span>
                 <button type="button" onClick={() => setSkills(prev => prev.filter(s => s !== skill))}>
-                  <X className="h-3 w-3" />
+                  <X className="h-3 w-3 flex-shrink-0" />
                 </button>
               </Badge>
             ))}

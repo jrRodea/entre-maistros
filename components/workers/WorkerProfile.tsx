@@ -108,7 +108,7 @@ export default function WorkerProfile({ worker }: WorkerProfileProps) {
             {worker.skills.map(s => (
               <span
                 key={s.id}
-                className="font-sans text-sm text-brand-verde-700 bg-brand-verde-100 px-3 py-1 rounded-full"
+                className="font-sans text-sm text-brand-verde-700 bg-brand-verde-100 px-3 py-1 rounded-full break-all"
               >
                 {s.skill}
               </span>
