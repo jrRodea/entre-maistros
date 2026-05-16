@@ -17,4 +17,7 @@ export const CATEGORIES = [
   { name: 'Manualidades', slug: 'manualidades', icon: '🎨', description: 'Artesanías, decoración y trabajos a mano' },
   { name: 'Repartidor', slug: 'repartidor', icon: '🛵', description: 'Entregas y mensajería local en Tepeji del Río' },
   { name: 'Mesero', slug: 'mesero', icon: '🍽️', description: 'Servicio de meseros para eventos y celebraciones' },
+  { name: 'Tatuador', slug: 'tatuador', icon: '🪡', description: 'Tatuajes y arte corporal profesional' },
+  { name: 'Abogado', slug: 'abogado', icon: '⚖️', description: 'Asesoría y servicios legales' },
+  { name: 'Belleza y Bienestar', slug: 'belleza-bienestar', icon: '💅', description: 'Estética, maquillaje, masajes y cuidado personal' },
 ]
