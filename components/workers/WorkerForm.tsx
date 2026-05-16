@@ -15,12 +15,13 @@ import type { WorkerProfile } from "@/types"
 interface WorkerFormProps {
   mode: 'create' | 'edit'
   initialData?: Partial<WorkerProfile>
+  variant?: 'default' | 'admin'
 }
 
 const inputClass = "border-brand-crema-300 focus:border-brand-verde focus:ring-brand-verde bg-white rounded-xl font-sans"
 const labelClass = "font-sans font-medium text-brand-verde"
 
-export default function WorkerForm({ mode, initialData }: WorkerFormProps) {
+export default function WorkerForm({ mode, initialData, variant = 'default' }: WorkerFormProps) {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -102,8 +103,15 @@ export default function WorkerForm({ mode, initialData }: WorkerFormProps) {
         photo_urls: photoUrls,
       }
 
-      const url = mode === 'create' ? '/api/workers' : `/api/workers/${initialData?.id}`
-      const method = mode === 'create' ? 'POST' : 'PATCH'
+      let url: string
+      let method: string
+      if (variant === 'admin') {
+        url = '/api/admin/workers'
+        method = 'POST'
+      } else {
+        url = mode === 'create' ? '/api/workers' : `/api/workers/${initialData?.id}`
+        method = mode === 'create' ? 'POST' : 'PATCH'
+      }
       const res = await fetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
@@ -111,7 +119,11 @@ export default function WorkerForm({ mode, initialData }: WorkerFormProps) {
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error ?? 'Error al guardar')
-      router.push(`/trabajador/${data.slug}`)
+      if (variant === 'admin') {
+        router.push(`/admin?creado=${data.slug}`)
+      } else {
+        router.push(`/trabajador/${data.slug}`)
+      }
     } catch (err: unknown) {
       setError(err instanceof Error ? err.message : 'Error inesperado')
     } finally {
@@ -282,7 +294,7 @@ export default function WorkerForm({ mode, initialData }: WorkerFormProps) {
         disabled={loading}
         className="w-full bg-brand-naranja hover:bg-orange-600 text-white font-sans font-semibold rounded-xl h-12 text-base"
       >
-        {loading ? 'Guardando...' : mode === 'create' ? 'Crear mi perfil' : 'Guardar cambios'}
+        {loading ? 'Guardando...' : variant === 'admin' ? 'Dar de alta maistro' : mode === 'create' ? 'Crear mi perfil' : 'Guardar cambios'}
       </Button>
     </form>
   )
