@@ -105,7 +105,7 @@ export default function WorkerForm({ mode, initialData, variant = 'default' }: W
 
       let url: string
       let method: string
-      if (variant === 'admin') {
+      if (variant === 'admin' && mode === 'create') {
         url = '/api/admin/workers'
         method = 'POST'
       } else {
@@ -119,8 +119,10 @@ export default function WorkerForm({ mode, initialData, variant = 'default' }: W
       })
       const data = await res.json()
       if (!res.ok) throw new Error(data.error ?? 'Error al guardar')
-      if (variant === 'admin') {
+      if (variant === 'admin' && mode === 'create') {
         router.push(`/admin?creado=${data.slug}`)
+      } else if (variant === 'admin' && mode === 'edit') {
+        router.push('/admin')
       } else {
         router.push(`/trabajador/${data.slug}`)
       }

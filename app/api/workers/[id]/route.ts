@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server'
-import { auth } from '@clerk/nextjs/server'
+import { auth, currentUser } from '@clerk/nextjs/server'
 import { createServerSupabase } from '@/lib/supabase'
 
 export async function GET(_req: NextRequest, { params }: { params: Promise<{ id: string }> }) {
@@ -30,7 +30,11 @@ export async function PATCH(req: NextRequest, { params }: { params: Promise<{ id
     .single()
 
   if (!worker) return NextResponse.json({ error: 'No encontrado' }, { status: 404 })
-  if (worker.clerk_user_id !== userId) return NextResponse.json({ error: 'Sin permiso' }, { status: 403 })
+  const caller = await currentUser()
+  const isAdmin = caller?.publicMetadata?.role === 'admin'
+  if (worker.clerk_user_id !== userId && !isAdmin) {
+    return NextResponse.json({ error: 'Sin permiso' }, { status: 403 })
+  }
 
   const body = await req.json()
   const { name, bio, age, experience_years, location, whatsapp_number, avatar_url, category_ids, skills, photo_urls } = body
@@ -93,7 +97,11 @@ export async function DELETE(_req: NextRequest, { params }: { params: Promise<{ 
     .single()
 
   if (!worker) return NextResponse.json({ error: 'No encontrado' }, { status: 404 })
-  if (worker.clerk_user_id !== userId) return NextResponse.json({ error: 'Sin permiso' }, { status: 403 })
+  const callerDel = await currentUser()
+  const isAdminDel = callerDel?.publicMetadata?.role === 'admin'
+  if (worker.clerk_user_id !== userId && !isAdminDel) {
+    return NextResponse.json({ error: 'Sin permiso' }, { status: 403 })
+  }
 
   await supabase.from('worker_profiles').delete().eq('id', id)
   return NextResponse.json({ ok: true })
