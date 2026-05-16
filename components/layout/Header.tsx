@@ -3,13 +3,15 @@
 import Link from "next/link"
 import { useAuth, useUser, UserButton, SignInButton } from "@clerk/nextjs"
 import { Button } from "@/components/ui/button"
-import { Hammer, Pencil } from "lucide-react"
+import { Hammer, Pencil, ShieldCheck } from "lucide-react"
 
 export default function Header() {
   const { isSignedIn } = useAuth()
   const { user } = useUser()
 
-  const isWorker = user?.publicMetadata?.role === 'worker'
+  const role = user?.publicMetadata?.role as string | undefined
+  const isWorker = role === 'worker'
+  const isAdmin = role === 'admin'
   const workerSlug = user?.publicMetadata?.worker_slug as string | undefined
 
   return (
@@ -65,6 +67,18 @@ export default function Header() {
                   >
                     <Hammer className="h-4 w-4" />
                     <span className="hidden sm:inline">Ser maistro</span>
+                  </Button>
+                </Link>
+              )}
+              {isAdmin && (
+                <Link href="/admin">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    className="h-10 border-brand-amarillo/60 text-brand-amarillo hover:bg-brand-amarillo hover:text-brand-verde hover:border-transparent font-sans gap-1.5 rounded-xl font-semibold"
+                  >
+                    <ShieldCheck className="h-4 w-4" />
+                    <span className="hidden sm:inline">Admin</span>
                   </Button>
                 </Link>
               )}
