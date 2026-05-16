@@ -14,7 +14,8 @@ export async function POST(req: NextRequest) {
   if (file.size > 5 * 1024 * 1024) return NextResponse.json({ error: 'Archivo demasiado grande (máx 5 MB)' }, { status: 400 })
 
   const ext = file.name.split('.').pop() ?? 'jpg'
-  const path = `${userId}/${type === 'avatar' ? 'avatar' : `photos/${Date.now()}`}.${ext}`
+  const uniqueId = `${Date.now()}_${Math.random().toString(36).slice(2, 7)}`
+  const path = `${userId}/${type === 'avatar' ? `avatar_${uniqueId}` : `photos/${uniqueId}`}.${ext}`
 
   const supabase = createServerSupabase()
   const arrayBuffer = await file.arrayBuffer()
